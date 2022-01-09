@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+//UseEffect allows us to perform side effects
+
+// Class based components
+// componentDidMount - when component mounts / loads
+// componentDidUpdate(prevProps) - when component props changes
+// componentWillUnmount- when component unmounts/ cleanup function
+
+// Functional components
+
+import React, { useEffect } from "react";
 
 function App() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [name, setName] = useState("");
+
+  //On Every Render
+  useEffect(() => {});
+
+  //On first Render / Mount Only ! - Similar to componentdidMount
+  useEffect(() => {}, []);
+
+  //On first Render + whenever dependency changes ! - similar to componentDidUpdate
+  useEffect(() => {}, [name]); //props, pieces of state can be included,
+
+  //Follows the same rules, except his handles the unmounmting on a component! -  like componentWillMount
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowWidth);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1> Heloooooooooo</h1>
     </div>
   );
 }
